@@ -23,7 +23,7 @@ music.volume = 0.30;
 
 
 /* =====================================================
-   START
+   START BUTTON
 ===================================================== */
 
 startButton.addEventListener(
@@ -31,16 +31,15 @@ startButton.addEventListener(
     function () {
 
         /*
-         * MUSİQİ DƏQİQ BURADA BAŞLAYIR.
          * İstifadəçi düyməyə basdığı üçün
-         * brauzerin autoplay problemi olmur.
+         * musiqi brauzer tərəfindən bloklanmır.
          */
 
         music.play().catch(
             function (error) {
 
                 console.log(
-                    "Musiqi başladıla bilmədi:",
+                    "Musiqi başlatmaq mümkün olmadı:",
                     error
                 );
 
@@ -77,7 +76,7 @@ startButton.addEventListener(
 
 
 /* =====================================================
-   STAR CANVAS
+   MOVING STARS
 ===================================================== */
 
 const canvas =
@@ -144,7 +143,8 @@ class Star {
 
     update() {
 
-        this.y -= this.speed;
+        this.y -=
+            this.speed;
 
 
         this.opacity +=
@@ -259,7 +259,7 @@ animateStars();
 
 
 /* =====================================================
-   START BURST
+   START PARTICLE BURST
 ===================================================== */
 
 function createBurst() {
@@ -443,18 +443,11 @@ memoryStars.forEach(
             "click",
             function () {
 
-                const image =
+                popupImage.src =
                     star.dataset.image;
 
-                const text =
-                    star.dataset.text;
-
-
-                popupImage.src =
-                    image;
-
                 popupText.textContent =
-                    text;
+                    star.dataset.text;
 
 
                 popup.classList.add(
@@ -472,6 +465,10 @@ memoryStars.forEach(
 
 
 
+/* =====================================================
+   CLOSE MEMORY
+===================================================== */
+
 closePopup.addEventListener(
     "click",
     function () {
@@ -482,7 +479,6 @@ closePopup.addEventListener(
 
     }
 );
-
 
 
 popup.addEventListener(
@@ -522,7 +518,8 @@ function createMiniBurst() {
             );
 
 
-        sparkle.textContent = "✦";
+        sparkle.textContent =
+            "✦";
 
 
         sparkle.style.position =
@@ -664,58 +661,6 @@ document.addEventListener(
             (
                 event.clientY - 300
             ) + "px";
-
-    }
-);
-
-
-
-/* =====================================================
-   VIDEO PAUSE MUSIC
-===================================================== */
-
-/*
- * Video açıldıqda musiqini bir az
- * sakitləşdiririk ki, video rahat eşidilsin.
- */
-
-const videos =
-    document.querySelectorAll(
-        "video"
-    );
-
-
-videos.forEach(
-    function (video) {
-
-        video.addEventListener(
-            "play",
-            function () {
-
-                music.volume = 0.08;
-
-            }
-        );
-
-
-        video.addEventListener(
-            "pause",
-            function () {
-
-                music.volume = 0.30;
-
-            }
-        );
-
-
-        video.addEventListener(
-            "ended",
-            function () {
-
-                music.volume = 0.30;
-
-            }
-        );
 
     }
 );
