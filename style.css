@@ -1,5 +1,5 @@
 @import url(
-    'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap'
+'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap'
 );
 
 
@@ -13,9 +13,11 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
+
 
 body {
 
@@ -31,18 +33,14 @@ body {
 
 }
 
-img,
-video {
-    max-width: 100%;
-}
 
-button {
-    font-family: inherit;
+img {
+    max-width: 100%;
 }
 
 
 /* =====================================================
-   STAR CANVAS
+   STARS
 ===================================================== */
 
 #stars {
@@ -73,14 +71,6 @@ button {
 
     z-index: 1000;
 
-    background:
-        radial-gradient(
-            circle at center,
-            #22252b 0%,
-            #08090c 45%,
-            #020305 100%
-        );
-
     display: flex;
 
     align-items: center;
@@ -88,6 +78,14 @@ button {
     justify-content: center;
 
     text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #25282e 0%,
+            #090a0d 48%,
+            #020305 100%
+        );
 
     transition:
         opacity 1.2s ease,
@@ -111,7 +109,7 @@ button {
 
     position: relative;
 
-    z-index: 2;
+    z-index: 3;
 
 }
 
@@ -139,8 +137,6 @@ button {
         clamp(150px, 25vw, 300px);
 
     line-height: .65;
-
-    font-weight: 400;
 
     background:
         linear-gradient(
@@ -520,7 +516,7 @@ button {
 
 
 /* =====================================================
-   CINEMATIC
+   CINEMATIC SECTION
 ===================================================== */
 
 .cinematic-section {
@@ -547,7 +543,8 @@ button {
 }
 
 
-.section-number {
+.section-number,
+.photo-number {
 
     position: absolute;
 
@@ -564,11 +561,7 @@ button {
 }
 
 
-.cinematic-text h2,
-.video-heading h2,
-.wall-title h2,
-.galaxy-title h2,
-.final-video-title h2 {
+.cinematic-text h2 {
 
     margin-top: 30px;
 
@@ -588,11 +581,7 @@ button {
 }
 
 
-.cinematic-text h2 i,
-.video-heading h2 i,
-.wall-title h2 i,
-.galaxy-title h2 i,
-.final-video-title h2 i {
+.cinematic-text h2 i {
 
     color: #a9aaad;
 
@@ -618,7 +607,7 @@ button {
 
     filter:
         grayscale(25%)
-        brightness(.8);
+        brightness(.82);
 
     transition:
         transform 1.5s ease;
@@ -634,66 +623,135 @@ button {
 
 
 /* =====================================================
-   VIDEO
+   BIG CINEMATIC PHOTO
 ===================================================== */
 
-.video-section {
+.cinematic-photo-section {
 
-    min-height: 100vh;
+    min-height: 120vh;
 
-    padding: 130px 8vw;
+    padding: 120px 7vw;
 
-    display: grid;
+    background: #101216;
 
-    grid-template-columns: .75fr 1.25fr;
-
-    gap: 80px;
+    display: flex;
 
     align-items: center;
 
-    background: #111318;
+    justify-content: center;
+
+    position: relative;
 
 }
 
 
-.video-section.reverse {
+.cinematic-photo-section.second {
 
-    grid-template-columns: 1.25fr .75fr;
+    background: #08090c;
 
 }
 
 
-.cinema-video {
+.big-photo {
 
-    width: 100%;
+    width: min(1200px, 92vw);
+
+    height: 78vh;
+
+    position: relative;
 
     overflow: hidden;
 
-    background: #000;
+}
 
-    box-shadow:
-        0 35px 80px rgba(0,0,0,.45);
+
+.big-photo::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.75),
+            transparent 60%
+        );
 
 }
 
 
-.cinema-video video {
+.big-photo img {
 
     width: 100%;
 
-    display: block;
+    height: 100%;
 
-    aspect-ratio: 16 / 9;
+    object-fit: cover;
 
-    object-fit: contain;
+    filter:
+        grayscale(25%)
+        brightness(.65);
+
+    transform: scale(1.03);
+
+    transition:
+        transform 2s ease,
+        filter 1s ease;
 
 }
 
 
-.video-heading h2 {
+.big-photo:hover img {
 
-    font-size:
-        clamp(60px, 7vw, 105px);
+    transform: scale(1.09);
+
+    filter:
+        grayscale(0%)
+        brightness(.8);
+
+}
+
+
+.photo-caption {
+
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 60px;
+
+    left: 60px;
+
+}
+
+
+.photo-caption span {
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    color: #aaa;
+
+}
+
+
+.photo-caption p {
+
+    margin-top: 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 38px;
+
+    line-height: .9;
+
+    font-style: italic;
 
 }
 
@@ -725,6 +783,26 @@ button {
 .wall-title .tiny {
 
     color: #74746f;
+
+}
+
+
+.wall-title h2 {
+
+    margin-top: 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(65px, 9vw, 130px);
+
+    line-height: .68;
+
+    font-weight: 400;
+
+    letter-spacing: -4px;
 
 }
 
@@ -777,7 +855,8 @@ button {
 
 .memory-photo:hover img {
 
-    filter: grayscale(0%);
+    filter:
+        grayscale(0%);
 
     transform: scale(1.06);
 
@@ -961,8 +1040,27 @@ button {
 
 .galaxy-title h2 {
 
+    margin-top: 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
     font-size:
         clamp(70px, 9vw, 125px);
+
+    line-height: .68;
+
+    font-weight: 400;
+
+    letter-spacing: -4px;
+
+}
+
+
+.galaxy-title h2 i {
+
+    color: #a9aaad;
 
 }
 
@@ -1038,9 +1136,11 @@ button {
 @keyframes spin {
 
     to {
+
         transform:
             translate(-50%, -50%)
             rotate(360deg);
+
     }
 
 }
@@ -1049,9 +1149,11 @@ button {
 @keyframes spinReverse {
 
     to {
+
         transform:
             translate(-50%, -50%)
             rotate(-360deg);
+
     }
 
 }
@@ -1117,8 +1219,6 @@ button {
 
     transform: scale(2);
 
-    color: #e9e5d8;
-
 }
 
 
@@ -1127,20 +1227,24 @@ button {
     top: 25%;
 }
 
+
 .memory-star:nth-of-type(4) {
     left: 72%;
     top: 18%;
 }
+
 
 .memory-star:nth-of-type(5) {
     left: 84%;
     top: 60%;
 }
 
+
 .memory-star:nth-of-type(6) {
     left: 28%;
     top: 78%;
 }
+
 
 .memory-star:nth-of-type(7) {
     left: 50%;
@@ -1163,7 +1267,7 @@ button {
 
 
 /* =====================================================
-   POPUP
+   MEMORY POPUP
 ===================================================== */
 
 .memory-popup {
@@ -1183,7 +1287,7 @@ button {
     flex-direction: column;
 
     background:
-        rgba(0,0,0,.92);
+        rgba(0,0,0,.93);
 
     backdrop-filter:
         blur(15px);
@@ -1208,7 +1312,8 @@ button {
 
 .memory-popup img {
 
-    max-width: min(700px, 85vw);
+    max-width:
+        min(700px, 85vw);
 
     max-height: 70vh;
 
@@ -1256,43 +1361,137 @@ button {
 
 
 /* =====================================================
-   FINAL VIDEO
+   FINAL PHOTO MOMENT
 ===================================================== */
 
-.final-video {
+.final-photo-moment {
 
-    min-height: 110vh;
-
-    padding: 150px 8vw;
+    min-height: 120vh;
 
     background: #0a0b0e;
 
-}
+    position: relative;
 
+    display: flex;
 
-.final-video-box {
+    align-items: center;
 
-    width: min(1100px, 100%);
+    justify-content: center;
 
-    margin: 100px auto 0;
-
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.5);
+    padding: 130px 7vw;
 
 }
 
 
-.final-video-box video {
+.final-photo-number {
+
+    position: absolute;
+
+    top: 70px;
+
+    right: 8vw;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: #5f6267;
+
+}
+
+
+.final-moment-image {
+
+    width: min(1200px, 92vw);
+
+    height: 78vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.final-moment-image img {
 
     width: 100%;
 
-    display: block;
+    height: 100%;
 
-    aspect-ratio: 16 / 9;
+    object-fit: cover;
 
-    object-fit: contain;
+    filter:
+        grayscale(20%)
+        brightness(.55);
 
-    background: #000;
+    transform: scale(1.02);
+
+    transition:
+        transform 2s ease;
+
+}
+
+
+.final-moment-image:hover img {
+
+    transform: scale(1.08);
+
+}
+
+
+.final-moment-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    padding-bottom: 70px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0,0,0,.75)
+        );
+
+}
+
+
+.final-moment-overlay p {
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    color: #aaa;
+
+}
+
+
+.final-moment-overlay h2 {
+
+    margin-top: 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(60px, 8vw, 110px);
+
+    line-height: .7;
+
+    font-weight: 400;
 
 }
 
@@ -1483,10 +1682,25 @@ button {
     }
 
 
-    .video-section,
-    .video-section.reverse {
+    .big-photo {
 
-        grid-template-columns: 1fr;
+        height: 65vh;
+
+    }
+
+
+    .photo-caption {
+
+        left: 30px;
+
+        bottom: 35px;
+
+    }
+
+
+    .photo-caption p {
+
+        font-size: 28px;
 
     }
 
@@ -1515,7 +1729,7 @@ button {
 
     .galaxy {
 
-        transform: scale(.75);
+        transform: scale(.7);
 
         transform-origin: top center;
 
@@ -1523,6 +1737,12 @@ button {
 
     }
 
+
+    .final-moment-image {
+
+        height: 65vh;
+
+    }
 
 }
 
@@ -1546,9 +1766,9 @@ button {
 
     .galaxy {
 
-        transform: scale(.58);
+        transform: scale(.55);
 
-        margin-left: -30px;
+        margin-left: -35px;
 
     }
 
